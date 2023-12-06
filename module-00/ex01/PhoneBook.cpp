@@ -6,7 +6,7 @@
 /*   By: kiroussa <kiroussa@oss@xtrm.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 01:44:23 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/06 02:09:06 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/06 07:01:01 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,4 @@ void	PhoneBook::searchContact(void)
 	} else {
 		std::cout << "Invalid index!" << std::endl;
 	}
-}
-
-PhoneBook::PhoneBook(PhoneBook &copy)
-{
-	*this = copy;
-}
-
-PhoneBook& PhoneBook::operator=(const PhoneBook& x)
-{
-	(void)x;
-	return (*this);
 }

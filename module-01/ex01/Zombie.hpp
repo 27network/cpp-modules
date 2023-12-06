@@ -6,7 +6,7 @@
 /*   By: kiroussa <kiroussa@oss@xtrm.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 02:27:29 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/06 02:34:57 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/06 06:59:54 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ class Zombie
 	public:
 		Zombie(void);
 		~Zombie(void);
-		Zombie(Zombie &copy);
-		Zombie& operator=(const Zombie& x);
 
 		void announce(void);
 		void setName(std::string name);

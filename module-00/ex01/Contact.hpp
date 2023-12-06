@@ -6,7 +6,7 @@
 /*   By: kiroussa <kiroussa@oss@xtrm.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 01:44:27 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/06 02:07:18 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/06 07:00:38 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ class Contact
 	public:
 		Contact(void);
 		~Contact(void);
-		Contact(Contact &copy);
-		Contact& operator=(const Contact& x);
 		void initContact(void);
 		void displayContact(bool inlineDisplay);
 		bool isInitialized(void);

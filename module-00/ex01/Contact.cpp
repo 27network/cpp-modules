@@ -6,7 +6,7 @@
 /*   By: kiroussa <kiroussa@oss@xtrm.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 01:44:27 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/06 02:13:02 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/06 07:00:51 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,4 @@ void	Contact::displayContact(bool inlineDisplay)
 		std::cout << "Phone number: " << _phoneNumber << std::endl;
 		std::cout << "Darkest secret: " << _darkestSecret << std::endl;
 	}
-}
-
-Contact::Contact(Contact &copy)
-{
-	*this = copy;
-}
-
-Contact& Contact::operator=(const Contact& x)
-{
-	(void)x;
-	return (*this);
 }

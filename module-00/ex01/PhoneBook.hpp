@@ -6,7 +6,7 @@
 /*   By: kiroussa <kiroussa@oss@xtrm.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 01:44:23 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/06 02:05:54 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/06 07:00:57 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ class PhoneBook
 	public:
 		PhoneBook(void);
 		~PhoneBook(void);
-		PhoneBook(PhoneBook &copy);
-		PhoneBook& operator=(const PhoneBook& x);
 
 		void addContact(void);
 		void searchContact(void);
