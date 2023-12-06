@@ -6,12 +6,14 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 07:02:27 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/06 07:08:45 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/06 21:46:57 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
+#include <stdio.h>
+#include <sys/stat.h>
 
 std::string	replace(std::string line, std::string s1, std::string s2)
 {
@@ -30,8 +32,27 @@ int	main(int argc, char **argv)
 		std::cout << "Usage: " << argv[0] << " <file> <string> <replace_with>" << std::endl;
 	else {
 		std::string		file_name = argv[1];
+		if (file_name.empty()) {
+			std::cout << "Error: Empty file name" << std::endl;
+			return (0);
+		}
 		std::string		s1 = argv[2];
+		if (s1.empty()) {
+			std::cout << "Error: Cannot replace empty string" << std::endl;
+			return (0);
+		}
 		std::string		s2 = argv[3];
+
+		FILE *fp = fopen(file_name.c_str(), "r");
+		struct stat fileInfo;
+		fstat(fileno(fp), &fileInfo);
+		if (!S_ISREG(fileInfo.st_mode)) {
+			fclose(fp);
+			std::cout << "Error: File is a directory" << std::endl;
+			return (0);
+		}
+		fclose(fp);
+
 		std::ifstream	file(file_name.c_str());
 		std::ofstream	new_file((file_name + ".replace").c_str());
 		std::string		line;
