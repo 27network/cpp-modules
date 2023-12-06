@@ -6,12 +6,13 @@
 /*   By: kiroussa <kiroussa@oss@xtrm.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 02:14:59 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/06 02:25:51 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/06 02:50:21 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
+#include <ctime>
 
 int		Account::_nbAccounts = 0;
 int		Account::_totalAmount = 0;
@@ -45,7 +46,25 @@ Account::Account(void)
 
 void	Account::_displayTimestamp(void)
 {
-	std::cout << "[19920104_091532] ";
+	time_t		now = time(0);
+	struct tm	*ltm = localtime(&now);
+
+	std::cout << "[" << 1900 + ltm->tm_year;
+	if (1 + ltm->tm_mon < 10)
+		std::cout << "0";
+	std::cout << 1 + ltm->tm_mon;
+	if (ltm->tm_mday < 10)
+		std::cout << "0";
+	std::cout << ltm->tm_mday << "_";
+	if (ltm->tm_hour < 10)
+		std::cout << "0";
+	std::cout << ltm->tm_hour;
+	if (ltm->tm_min < 10)
+		std::cout << "0";
+	std::cout << ltm->tm_min;
+	if (ltm->tm_sec < 10)
+		std::cout << "0";
+	std::cout << ltm->tm_sec << "] ";
 }
 
 void	Account::displayStatus(void) const
