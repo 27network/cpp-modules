@@ -6,16 +6,19 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 01:45:01 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/06 02:04:30 by kiroussa         ###   ########.fr       */
+/*   Updated: 2023/12/08 11:06:59 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <csignal>
 #include <iostream>
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
 int	main(void)
 {
+	signal(SIGINT, SIG_IGN);
+
 	PhoneBook	phoneBook;
 	std::string	command;
 
