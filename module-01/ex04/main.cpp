@@ -6,7 +6,7 @@
 /*   By: kiroussa <oss@xtrm.me>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 07:02:27 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/06 21:46:57 by kiroussa         ###   ########.fr       */
+/*   Updated: 2024/01/04 00:22:11 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,23 @@ int	main(int argc, char **argv)
 		}
 		std::string		s2 = argv[3];
 
-		FILE *fp = fopen(file_name.c_str(), "r");
-		struct stat fileInfo;
-		fstat(fileno(fp), &fileInfo);
-		if (!S_ISREG(fileInfo.st_mode)) {
-			fclose(fp);
-			std::cout << "Error: File is a directory" << std::endl;
-			return (0);
+		struct stat buf;
+		stat(argv[1], &buf);
+		if (S_ISDIR(buf.st_mode)){
+			std::cerr << "Error: " << argv[1] << ": Path is a directory" << std::endl;
+			return (1);
 		}
-		fclose(fp);
+		std::ifstream file(file_name.c_str());
+		if (file.fail()){
+			std::cerr << "Error: " << argv[1] << ": incorrect path or missing permissions" << std::endl; 
+			return (1);
+		}
 
-		std::ifstream	file(file_name.c_str());
 		std::ofstream	new_file((file_name + ".replace").c_str());
+		if (new_file.fail()){
+			std::cerr << "Error: output file failed" << std::endl;
+			return (1);
+		}
 		std::string		line;
 
 		if (!file.is_open())
