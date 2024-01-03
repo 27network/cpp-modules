@@ -6,13 +6,14 @@
 /*   By: kiroussa <kiroussa@oss@xtrm.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 01:44:23 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/06 07:01:01 by kiroussa         ###   ########.fr       */
+/*   Updated: 2024/01/04 00:14:29 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include <iostream>
+#include <cstdlib>
 #include <iomanip>
+#include <iostream>
 
 PhoneBook::PhoneBook(void)
 {
@@ -51,6 +52,10 @@ void	PhoneBook::searchContact(void)
 	}
 	std::cout << std::endl << "Enter index: ";
 	std::getline(std::cin, index);
+	if (std::cin.eof()) {
+		std::cout << std::endl;
+		exit(0);
+	}
 	if (index.length() == 1 && index[0] >= '0' && index[0] <= '7' && index[0] - '0' < _nbContacts) {
 		_contacts[index[0] - '0'].displayContact(false);
 	} else {

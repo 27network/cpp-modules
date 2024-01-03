@@ -6,13 +6,14 @@
 /*   By: kiroussa <kiroussa@oss@xtrm.me>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 01:44:27 by kiroussa          #+#    #+#             */
-/*   Updated: 2023/12/06 07:00:51 by kiroussa         ###   ########.fr       */
+/*   Updated: 2024/01/04 00:14:19 by kiroussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
-#include <iostream>
+#include <cstdlib>
 #include <iomanip>
+#include <iostream>
 
 Contact::Contact(void)
 {
@@ -30,6 +31,10 @@ void	Contact::_prompt(std::string prompt, std::string &input)
 	while (input.empty()) {
 		std::cout << "  " << prompt << ": ";
 		std::getline(std::cin, input);
+		if (std::cin.eof()) {
+			std::cout << std::endl;
+			exit(0);
+		}
 		if (input.empty())
 			std::cout << "  " << prompt << " can't be empty!" << std::endl;
 	}
